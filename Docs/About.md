@@ -1,4 +1,4 @@
-#A Machine Learning Approach to Early Psychosis Detection
+# A Machine Learning Approach to Early Psychosis Detection
 
 Early detection of psychosis can greatly reduce the negative impact a psychotic disorder can have on a patient’s life. If left untreated, an initial psychotic episode can lead to irreparable cognitive deterioration, gray matter atrophy, and further psychotic episodes later in life (McClellan, 2004). Psychosis is typically preceded by a prodromal phase characterized by social and cognitive deficits, which can be identified before the onset of positive psychotic symptoms (McCutcheon, 2020; Fitzgerald, 2004). However, premorbid and prodromal symptoms can be easily confused for indicators of other psychiatric disorders that appear during adolescence or missed altogether (Woodberry, 2016). Predictive machine learning may offer an avenue for objectively evaluating key indicators of a psychosis high risk state, possibly allowing for future clinical application.
 
