@@ -13,4 +13,6 @@ Race has been simplified into four categories: White, Black, Hispanic, and Other
 
 Highest level of parental education has been simplified into three categories: High School Education (meaning that the parents completed high school or less), college (meaning that the parents completed some or all of college, but not beyond a bachelor's degree), post-grad (meaning that the parents completed at least some education beyond a bachelor's degree)
 
+Sex has been coded as male = 1, female = 2
+
 ### Mental Health Summary Score
