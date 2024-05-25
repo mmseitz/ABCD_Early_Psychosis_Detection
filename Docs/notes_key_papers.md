@@ -29,4 +29,14 @@ Papers and citations in Zotero
 - The presence of psychosis in a first-degree relative increases the severity of childhood premorbid impairment in schizophrenia
 - Children and adolescents who later develop schizophrenia show deficits in general cognitive abilities
 - in addition to gen cog impairments, specific premorbid impairments exist in attention, memory, reasoning, and executive functioning, and some evidence includes processing speed
-- premorbid cog deficits support the neurodevelopmental model of schizophrenia, which posits the earliest signs of the disorder are mild abnormalities in cognitive development during the first two decades of life
+- premorbid cog deficits support the neurodevelopmental model of schizophrenia, which posits the earliest signs of the disorder are mild abnormalities in cognitive development during the first two decades of life with deficits in the acquisition of cognitive abilities compared to normative individuals
+- performance lag may begin as early as preschool age
+- cognitive deficits exist prior to psychosis onset
+- UHR/CHR/prodromal (although prodromal label can only be assinged after transition to psychosis) are identified through dimensions of attenuated psychotic symptoms and/or familial risk. approximately 13-23% of these indivdiuals convert to psychosis within two years
+- there is reliable evidence that ultra-high risk individuals are globally cognitively impaired when compared to a normal sample
+- at-risk participants demonstrate deficits in working memory, executive function, verbal fluency, attention, and memory
+- individuals who endorse psychotic symptoms between ages 8-12 have a significantly lower predicted age based on their cognitive performance. This impairment is present at 8 years old, becomes even more pronounced after age 16, and is observed in all tested domains (executive function, memory, complex cognition, social cognition, and senorimotor) with the biggest lag in complex cognition, which includes verbal reasoning, non-verbal reasoning, and spatial processing, and social cognition [Gur et al., 2014]
+- UHR impairment is far less than impairment following first psychotic episode. UHR demonstrate impairments intermediate between healthy controls and first-episode idnviduals
+- CHR individauls have been found to have perceptual processing abnormalities--difficulties with visual form perception and perceptual organization
+- Sum.: prodromal psychosis is characterized by global cognitive impairment, with some specific risk associated with poor memory and attention during this stage. Individuals with a strong familial risk, more pronounced attenuated psychosis, and those who will ultimately convert to a psychotic disorder, demonstrate the greatest impairment in cognition on average.
+

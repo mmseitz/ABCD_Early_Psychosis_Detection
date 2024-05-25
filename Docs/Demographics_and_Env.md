@@ -30,3 +30,6 @@ These columns were tested for significant differences between psychosis high- an
 WIthin the CBCL, we selected columns most closely associated with psychosis risk: ['cbcl_scr_syn_thought_t' (thought CBCL syndrome scale t-score), 'cbcl_scr_syn_totprob_t' (TotProb CBCL syndrome scale t-score)]. Thought is the HiTOP spectrum associated with psychotic features. The total score contains data across HiTOP spectra. 
 
 These columns were tested for significant differences between psychosis high- and low-risk groups. 
+
+### Evaluating Familial Psychosis Risk
+Elevated familiar risk for psychosis determined by a participant having at least 1 affected first degree relative or at least 2 affected second degree relatives (Sheffield et al., 2018)
