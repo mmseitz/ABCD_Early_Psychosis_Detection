@@ -16,21 +16,5 @@ Further esearch conducted on the PQ-BC in "An Item Respose Theory Analysis of th
 
 PQ-BC totals and 7-item screener totals are calculated for the ABCD dataset in script "calc_pps_totals.py"
 
-### Family History and mean PQ-BC endorsement and distress correlations
-
-(Karcher et al., 2018)
-- Family history of psychotic disorder in first degree relatives was associated with higher mean PQ-BC total and distress, whereas a family history of depression or mania was not
-- Higher PQ-BC scores were associated with neuropsychological test performance deficits such as working memory, motor and speech developmental milestone delays (particularly motor and speech devleopment) as well as KSADS internalizing composite
-- PLE persistence over time is associated with greater odds of developing a psychotic disorder in adulthood
-
-(Karcher et al., 2021)
-- Brain volume associated with environmmental risk factors and PLEs
-- PLEs associated with urbanicity, deprivation, and toxins
-- Parental PLEs measured in Achenbach Self Report
-- study examined (parcellated cortical and subcortical Desikan regions) intracranial volume, total cortical brain volume, total subcortical gray matter volume, total surface area, total cortical thickness, and hippocampal volume due to the wealth of research linking hippocampal volume to both environmental risk factors and PLEs
-- Associations between PLEs and environmental risk factors: greater total drug offense exposure and less perception of neighborhood safety were associated with greater PLEs; greater deprivation and fewer years in current residence were associated with greater PLEs; lead exposure was the only environmental toxin associated with greater PLEs
-- Each of the structural MRI variables (except hippocampal volume) were signifiicantly associated with PLEs. These structural MRI variables were also associated with all of the environmental risk factors that were significantly associated with PLEs including neighborhood safety, all deprivation indices, and lead exposure risk
-- some evidence consistent with brain volume partially mediating the association between deprivation (both rate of poverty and overall deprivation), perceptions of neighborhood safety, and lead exposure risk with PLEs
-
 ### PQ-BC endorsement across timepoints
 The percentage of participants endorsing PQ-BC questions decreases across timepoints, in keeping that the expectation that the incidence of normal childhood psychotic-like experiences decreases as children reach adolescence. Relatively few participants were lost to follow-up from the baseline to follow-up 2, but substantial dropout (4,161 participants) occurred between follow-ups 2 and 3. Therefore, we will use PQ-BC data from follow-up 2 to determine our high- and low- risk groups. Both cognitive test data and PQ-BC data will be taken from follow-up 2. 799 participants (7.67% of follow-up 2 participants) endorsed being bothered by 3+ PQ-BC questions and, on average, endorsed 2.2 screener questions. 
