@@ -40,3 +40,51 @@ Papers and citations in Zotero
 - CHR individauls have been found to have perceptual processing abnormalities--difficulties with visual form perception and perceptual organization
 - Sum.: prodromal psychosis is characterized by global cognitive impairment, with some specific risk associated with poor memory and attention during this stage. Individuals with a strong familial risk, more pronounced attenuated psychosis, and those who will ultimately convert to a psychotic disorder, demonstrate the greatest impairment in cognition on average.
 
+### Structural Brain Abnormalities in Psychosis-Risk Children
+
+(Satterthwaite et al., 2016)
+- population ranged in age from 8-22yrs (PS n = 391, TD n = 400)
+- compared to the TD group, the PS group had diminished whole brain gray matter volume and expanded white matter volume
+- Voxelwise analyses revealed significantly lower gray matter volume in the medial temporal lobes as well as in frontal, temporal, and parietal cortex. Reduction of medial temporal lobe volume was correlated with PS symptom severity
+- Structural brain abnormalities that have been commonly reported in adults with psychosis are present early in life in youth with PS symptoms, and are not due to medication effects
+- These differences can be used in conjunction with other risk measures to predict psychosis risk
+- Psychosis is increasingly conceptualized as a downstream product of abnormal neurodevelopment
+- The ENIGMA-SZ consortium examined subcortical volumes from a sample totaling over 2,000 patients with schizophrenia, and found reduced volume that was maximal in the hippocampus
+- The NAPLS consortium demonstrated that clinical high risk youth who later convert to psychosis have accelerated gray matter loss in frontal cortex compared to non-converters adn healthy comparators
+- It is increasingly recognized that subtle psychosis-spectrum symptoms are prevalent (5-10%) in the general population--these symtpoms can impact functioning, are associated with increased risk of conversion to a psychotic disorder, and have been associated wih neuroimaging abnormalities
+- PS youths had reduced intra-cranial volume (ICV) compared to TD youth
+- PS youths had marked reductioins in total gray matter volume
+- When accounting for diminished ICV, PS youth had greater white matter volume than TD comparators
+- When examined on a lobar level while accounting for ICV, gray matter differences were widespread and most significant within frontal cortex
+- Voxelwise analyses revealed significant clusters of reduced volume in PS youth in a network of regions including bilateral medial temporal lobe, ventromedial prefrontal cortex, orbitofrontal cortex, and posterior cingulate. Reduced volume was also seen in right dorsolateral prefrontal cortex and superior parietal cortex. Peak deficits were found in the medial temporal lobe
+- Greater severity of PS symptoms in participants was associated with volume reduction in bilateral medial temporal lobe
+- Many of the regions impacted are part of the default mode network, a large-scale functional network that is critical for internally directed attention, theory of mind, social cognition, and memory
+- Both functional and structural deficits of default mode regions have been widely documented in psychosis
+- Early loss of gray matter is consistent with prior reports of 'accelerated aging' in schizophrenia
+
+(Sheffield et al. 2017)
+- More pronounced cortical gray matter loss has been detected in UHR individuals who later convert to psychosis relative to health control and relative to non-converters
+- Neuroimaging studies provide consistent evidence for greater gray matter decline over time in at-risk individuals who go on to develop the full-blown disorder relative to those who don't
+- Structural brain abnormalities in psychosis occur prior to full-blown symptoms and progressively worsen as psychosis develops
+
+### Youth Psychosis Risk
+(Calkins et al., 2014)
+- There are much higher rates of PLEs in youths than adults (range 5-35%). Although these symptoms are likely transient in most children, their evolution into full psychosis may be moderated by symptom severity, type, and persistence
+- Regardless of eventual psychosis, early subclinical psychotic symptoms are associated with comorbid psychopathology, including depression, anxiety, and substance use; impaired global functioning and increased suicidality
+- Psychosis spectrum youths showed a mild but significant decrease in performance accuracy across neurocognitive domains compared to non-spectrum
+- Psychosis spectrum was significantly predicted by mania, depression, specific phobia, social phobia, agoraphobia, obsessive-compulsive, post-traumatic stress, oppositional defiant, and attention deficit/hyperactivity domains. Moreover, a third of psychosis spectrum youths endorsed passive thoughts of death and dying, more than 20% endorsed suicidal ideation, and both were significant predictors of psychosis spectrum group membership
+- Among physically healthy young people, 12.3% reported positive sub-psychotic symptoms. *The most discriminating and widely endorsed attenuated positive symptoms were unusual thoughts and auditory perceptions, as observed in other populations*
+- An additional 3.7% of participants (20.2% of psychosis spectrum participants) reported threshold psychotic symptoms
+- Gender differences in psychotic-like experiences have varied in population studies. In our sample, being male was significantly predictive of psychosis spectrum, possibly reflecting earlier onset of clinically significant psychotic symptoms in males
+- The psychosis spectrum group was disproportionately non-European American, and ethnicity was a significant predictor of spectrum status, consistent with prior studies of ethnic minority
+- Although caregivers of psychosis spectrum youths reported higher levels of sub-psychotic symptoms than caregivers of non-spectrum youths, they substantially under-reported symptoms compared to their children
+- several studies suggest that adolescents tend not to confide psychotic like experiences to their caregivers or clinicians
+
+### ABCD
+(Karcher et al., 2020)
+- ABCD is the largest study in the US assessing brain development (baseline n = 11,875)
+- The dataset has a wealth of measured attributes of youths and their environment, including neuroimaging, cognitive, biospecimen, behavioral, youth self-report and parent self-report metrics, and environmental measures
+- ABCD utilized a school-based national recruitment strategy with limited exclusion criteria, helping to overcome challenges to previous general population studies that generally did not include neuroimaging as well as attempts to understand the risk factors associated with negative outcomes that relied on convenience samples
+- ABCD has 21 nationally distributed data collection sites
+- ABCD study assessments encompass seven domains: substance use, mental health, physical health and biospecimens, neurocognition, gender identity and sexual health, culture and environment, and brain imaging
+
