@@ -12,3 +12,8 @@ Tasks selected are:
 - Stop Signal Task -- behavioral and fMRI data (follow-up 2 data only)
 
 Beta weight parameters were selected based on brain regions relevant to psychosis risk. The most descriptive behavioral parameters were selected for each task. DFs were filtered to include only data from follow-up 2. Each DF column was evaluated for frequency of NaN values, and columns with particularly high NaN values were dropped from the DF (noted in script).
+
+# Preprocessing Structural Scan Data
+
+A subset of ABCD structural scan data are preprocessed in preparation for the ML pipeline (csv: abcd_smrip10201, script: structural_data_preprocessing)
+Cortical thickness and cortical volume of right and left Desikan-Killiany regions, in addition to hemisphere and total mean values collected at ABCD follow-up 2 are included. Previous literature has shown that participants at risk for psychosis generally, as well as ABCD psychosis risk participants specifically, exhibit structural brain abnormalities.
