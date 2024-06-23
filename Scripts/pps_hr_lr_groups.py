@@ -304,3 +304,62 @@ for row in pps_hr_4.index:
 pps_hr_4.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PPS_HR_T2_thresh_4.csv')
 
 # %%
+####
+#Investigating PQ-BC breakdown of participants who endorsed 4+ PQ-BC questions
+#(based off of literature thresholds)
+pqbc_2['pqbc_endorsed_totals'].value_counts()
+pqbc_2['pqbc_bother_totals'].value_counts()
+# %%
+#count how many participants endorsing 4+ questions also endorsed being bothered by those PQBC questions
+e_counter = 0
+b_counter = 0
+for row in pqbc_2.index: 
+    if pqbc_2['pqbc_endorsed_totals'][row] >= 4:
+        e_counter += 1
+        if pqbc_2['pqbc_bother_totals'][row] >= 1:
+            b_counter += 1
+print(e_counter)
+print(b_counter)
+#update group column
+pps_risk_4 = pqbc_2
+pps_risk_4['group'] = 0
+pps_risk_4.loc[pps_risk_4['pqbc_endorsed_totals'] >= 4, ['group']] = 1
+#make list containing all High Risk subjectkeys
+list_4 = []
+for row in pps_risk_4.index:
+    if pps_risk_4['group'][row] == 1:
+        list_4.append(pps_risk_4['subjectkey'][row])
+len(list_4)
+#update PQ-BC totals to reflect new grouping
+pps_risk_4 = pqbc_totals
+pps_risk_4['group'] = 0
+for row in pps_risk_4.index:
+    if pps_risk_4['subjectkey'][row] in list_4:
+        pps_risk_4['group'][row] = 1
+pps_risk_4['group'].sum()
+#save new grouping to file
+pps_risk_4.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/PPS_T2_endorsed_4.csv')
+# %%
+#Calculate df stats for follow-up 2
+
+#calc_pop_endorsement(tp_2_totals, '2', '1', 'greater_than')
+#calc_pop_endorsement(tp_2_totals, '2', '1', 'equals_to')
+#calc_pop_endorsement(tp_2_totals, '2', '2', 'greater_than')
+#calc_pop_endorsement(tp_2_totals, '2', '2', 'equals_to')
+#calc_pop_endorsement(tp_2_totals, '2', '3', 'greater_than')
+#calc_pop_endorsement(tp_2_totals, '2', '3', 'equals_to')
+#calc_pop_endorsement(tp_2_totals, '2', '4', 'greater_than')
+#calc_pop_endorsement(tp_2_totals, '2', '4', 'equals_to')
+#calc_pop_endorsement(tp_2_totals, '2', '5', 'greater_than')
+calc_pop_endorsement(tp_2_totals, '2', '5', 'equals_to')
+
+#calculate risk dictionaries for participants who endorsed at least 4 PQBC questions
+tbl_thresh_4_dic = make_risk_dic(tp_bl_totals, '4')
+t1_thresh_4_dic = make_risk_dic(tp_1_totals, '4')
+t2_thresh_4_dic = make_risk_dic(tp_2_totals, '4')
+t3_thresh_4_dic = make_risk_dic(tp_3_totals, '4')
+
+#determine how many participants remained in high risk/low risk groups across timepoints
+count_group_cont(tbl_thresh_4_dic, t1_thresh_4_dic, 'baseline', '1', '4')
+count_group_cont(t1_thresh_4_dic, t2_thresh_4_dic, '1', '2', '4')
+count_group_cont(t2_thresh_4_dic, t3_thresh_4_dic, '2', '3', '4')
