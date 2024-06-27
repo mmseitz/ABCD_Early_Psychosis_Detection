@@ -80,7 +80,7 @@ def make_ttest_df(dic):
 #structural scans
 anat_scan = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Structural_Scans/structural_data.csv')
 #PQ-BC groupings
-pps = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/PPS_T2_endorsed_4.csv')
+pps = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/PQBC_4.csv')
 #Monetary Incentive Delay Task (behavioral and fMRI measures)
 mid_behav = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/MID_files/mid_behav_reduced.csv')
 mid_brain = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/MID_files/MID_brain/mid_brain_reduced.csv')
@@ -116,6 +116,7 @@ anat_ttest_df = make_ttest_df(anat_dic)
 #111 of 142 ROIs were significantly different between HR and LR groups
 #save dataframe containing t-test results to folder
 anat_ttest_df.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/spreadsheets/data_sig_test_results/anat_scan_ttest.csv')
+anat_ttest_df['significant'].sum()
 # %%
 ####
 #identify whether significant differences exist in MID data
@@ -134,7 +135,7 @@ mid_behav_nonan['group'].sum() #971 of 1279 HR participants remaining
 #make dictionary containing ttest results
 mid_behav_dic = make_ttest_dic(mid_behav_nonan, mid_behav_list)
 #convert ttest dictionary to df, including column signifying whether p-value is less than 0.05
-mid_behav_ttest_df = make_ttest_df(mid_behav_dic) # 2 of 27 measures were significanlty different between HR and LR groups
+mid_behav_ttest_df = make_ttest_df(mid_behav_dic) # 4 of 27 measures were significanlty different between HR and LR groups
 #save df to folder
 mid_behav_ttest_df.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/spreadsheets/data_sig_test_results/mid_behav_ttest.csv')
 #Brain data
@@ -154,6 +155,7 @@ mid_brain_dic = make_ttest_dic(mid_brain_nonan, mid_brain_list)
 mid_brain_ttest_df = make_ttest_df(mid_brain_dic)
 #save df to folder
 mid_brain_ttest_df.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/spreadsheets/data_sig_test_results/mid_brain_ttest.csv')
+mid_brain_ttest_df['significant'].sum() #0 significant measures
 # %%
 ####
 #Identify whether significant differences exist in SST data
@@ -190,9 +192,10 @@ for i in list(sst_brain_nonan):
 sst_brain_dic = make_ttest_dic(sst_brain_nonan, sst_brain_list)
 #convert dictionary to df, including column signifying whether p-value is less than 0.05
 sst_brain_ttest_df = make_ttest_df(sst_brain_dic)
-sst_brain_ttest_df['significant'].sum() #3 significant measures
+sst_brain_ttest_df['significant'].sum() #1 significant measures
 #save df to folder
 sst_brain_ttest_df.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/spreadsheets/data_sig_test_results/sst_brain_ttest.csv')
+sst_brain_ttest_df['significant'].sum()
 # %%
 ####
 #Identify whether significant differences exist in Emotional N-Back data
@@ -227,7 +230,7 @@ for i in list(enb_brain_nonan):
 enb_brain_dic = make_ttest_dic(enb_brain_nonan, enb_brain_list)
 #convert dictionary to df
 enb_brain_ttest_df = make_ttest_df(enb_brain_dic)
-enb_brain_ttest_df['significant'].sum() #11 of 90 measures significant
+enb_brain_ttest_df['significant'].sum() #16 of 90 measures significant
 #save df to folder
 enb_brain_ttest_df.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/spreadsheets/data_sig_test_results/enb_brain_ttest.csv')
 # %%
@@ -248,6 +251,7 @@ gdt_dic = make_ttest_dic(gdt_nonan, gdt_list)
 gdt_ttest_df = make_ttest_df(gdt_dic) #9 of 10 measures significant
 #save df to folder
 gdt_ttest_df.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/spreadsheets/data_sig_test_results/gdt_ttest.csv')
+gdt_ttest_df['significant'].sum()
 # %%
 ####
 #Identify whether significant differences exist between groups in the Social Influence Task
@@ -264,9 +268,11 @@ for i in list(sit_nonan):
 #make dictionary containing ttest results
 sit_dic = make_ttest_dic(sit_nonan, sit_list)
 #convert dictionary to df
-sit_ttest_df = make_ttest_df(sit_dic) #7 of 14 measures significant
+sit_ttest_df = make_ttest_df(sit_dic) #9 of 14 measures significant
 #save df to folder
 sit_ttest_df.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/spreadsheets/data_sig_test_results/sit_ttest.csv')
+# %%
+sit_ttest_df['significant'].sum()
 # %%
 ####
 #Identify whether significant differences exist between groups in the NIH Toolbox tasks
@@ -302,7 +308,8 @@ for i in list(lmt_nonan):
 #make dictionary containing ttest results
 lmt_dic = make_ttest_dic(lmt_nonan, lmt_list)
 #convert dictionary to df
-lmt_ttest_df = make_ttest_df(lmt_dic) #0 of 4 measures significant
+lmt_ttest_df = make_ttest_df(lmt_dic) #1 of 4 measures significant
 #save df to folder
 lmt_ttest_df.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/spreadsheets/data_sig_test_results/lmt_ttest.csv')
 # %%
+

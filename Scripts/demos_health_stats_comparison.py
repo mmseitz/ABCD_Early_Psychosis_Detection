@@ -37,7 +37,7 @@ ksads_p = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/De
 medhx = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Demos_and_Env/med_hx_reduced.csv')
 
 #PQ-BC (participants who endorsed 4+ PQ-BC questions labeled as 'High Risk')
-pps = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/PPS_T2_endorsed_4.csv')
+pps = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/PQBC_4.csv')
 
 # %%
 ####
@@ -93,6 +93,7 @@ cbcl_grouped.shape
 #ABCD Mental Health Summary Scores (MHSS) statistical analyses between HR/LR groups
 #add HR/LR groupings to mhss df
 mhss_grouped = df_merge(mhss, pps, 2)
+# %%
 mhss_grouped['ple_y_ss_total_bad'] = pd.to_numeric(mhss_grouped['ple_y_ss_total_bad'])
 mhss_grouped['ple_y_ss_affected_bad_sum'] = pd.to_numeric(mhss_grouped['ple_y_ss_affected_bad_sum'])
 mhss_grouped['ple_y_ss_total_good'] = pd.to_numeric(mhss_grouped['ple_y_ss_total_good'])
@@ -179,4 +180,7 @@ ksads_dic = {}
 ksads_dic['KSADS_psychosis_sx'] = stats.ttest_ind(k_HR['k_p_total_psychosis_sx'], k_LR['k_p_total_psychosis_sx'], equal_var = False)
 ksads_dic['KSADS_psychosis_dx'] = stats.ttest_ind(k_HR['k_p_total_psychosis_dx'], k_LR['k_p_total_psychosis_dx'], equal_var = False)
 print(ksads_dic)
+
+# %%
+ksads_grouped.shape
 # %%
