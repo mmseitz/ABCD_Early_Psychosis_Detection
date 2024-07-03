@@ -38,3 +38,7 @@ It was necessary to refine the Low Risk group from the pool of 8,768 who endorse
 (refer to LR_group_refinement.py)
 
 The remaining participants were then matched in terms of age, ethnicity, and sex using R library MatchIt, leaving 1,613 HR participants (40% white, 29% black, 24% hispanic, 6% other; 51% male, 49% female) and 1,613 LR participants (41% white, 26% black, 27% hispanic, 5% other; 51% male, 49% female).
+
+### Statistical Comparison Between Matched HR and LR Groups
+
+When the HR group was compared against the matched LR group, the HR group differed significantly from the LR group across health and demographics (household income and highest level parental education); mental health summary scores (ACE total, how much affected by reported ACEs, overt aggression, relational agression, and overt victim); CBCL (thought sx, internalizing sx, externalizing sx, and CBCL total problems); developmental history (maternal prenatal substance use, parent reported speech and motor development); medical history (total injuries); family medical history (first-degree relatives hx of psychosis sx, grandparents' hx of psychosis sx); and KSADS  (total parent-reported psychosis sx, total parent-reported psychosis dx). These significant differences are fairly consistent with the differences found when the HR sample was compared to the rest of follow-up 2 ABCD participant pool.
