@@ -1,6 +1,7 @@
 
 #This script refines the PQ-BC Low-Risk group. Participants who endorsed any PQ-BC items are removed, 
 #as are participants who have any family history of psychiatric disorders
+#preprocessing to match groups on sex, ethnicity, and age (matching done in risk_group_demo_matching.r)
 # %%
 ####
 #import libraries
@@ -10,12 +11,25 @@ import math
 import pandas as pd
 import scipy.stats as stats
 import numpy as np
+from scipy.stats import chi2_contingency
 # %%
 ####
 #import CSVs
+#Prodromal Psychosis Scores (preprocessed)
 pps = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/PQBC_4.csv')
+#PPS scores (raw)
+pps01 = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/pps01.csv')
+#Family History Questionnaire parts 1 and 2
 fhx_1 = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Demos_and_Env/abcd_may2024/fhxp102.csv')
 fhx_2 = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Demos_and_Env/abcd_may2024/fhxp201.csv')
+#participant demographics csv (preprocessed)
+demos = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Demos_and_Env/num_demos.csv')
+# %%
+#Read back in data, now matched by R MatchIt
+#Matched HR and LR sample
+matched_sample = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/demos_matched.csv')
+#Matched LR group
+matched_LR = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/LR_matched.csv')
 # %%
 ####
 #function to check how many NaNs exist in each selected df column
@@ -24,6 +38,54 @@ def count_nans(df):
     for i in l:
         if df[i].isna().sum() >= 50:
             print(i, df[i].isna().sum())
+# %%
+#function to count how many of each ethnicity group in HR and LR groups
+def count_instances_race(df):
+    white = 0 
+    black = 0
+    hispanic = 0
+    other = 0
+    all = 0
+    for row in df.index: 
+        all += 1
+        if df['race'][row] == 'white':
+            white += 1
+        if df['race'][row] == 'black':
+            black += 1
+        if df['race'][row] == 'hispanic': 
+            hispanic += 1
+        if df['race'][row] == 'other':
+            other += 1
+    print('white')
+    print(white/all)
+    print('black')
+    print(black/all)
+    print('hispanic')
+    print(hispanic/all)
+    print('other')
+    print(other/all)
+# %%
+####
+#function to count instances of male and female partiicpants in dfs
+def count_instances_sex(df):
+    m = 0
+    f = 0 
+    other = 0
+    all = 0
+    for row in df.index: 
+        all += 1
+        if df['sex'][row] == 1:
+            m += 1
+        if df['sex'][row] == 2:
+            f += 1
+        if df['sex'][row] == 3:
+            other += 1
+    print('male')
+    print(m/all)
+    print('female')
+    print(f/all)
+    print('other')
+    print(other/all)
 # %%
 ####
 #Remove LR participants who endorsed any PQ-BC items at timepoint 2
@@ -40,62 +102,6 @@ for row in pps_LR_t2.index:
 print(pps_lr_count)
 #create LR df containing only pts who endorsed 0 PQBC items at T2
 no_PQBC = pps_LR_t2.loc[lambda pps_LR_t2: pps_LR_t2['PQBC_total_endorsed'] == 0] #LR group is 5930 pts
-# %%
-# ####
-# #Remove LR particpants with any history of family psychiatric illness
-# fhx_1 = fhx_1.drop([0])
-# fhx_2 = fhx_2.drop([0])
-# fhx_2 = fhx_2.rename(columns= {'visit': 'eventname'})
-# fhx = fhx_1.merge(fhx_2, on = ['subjectkey', 'eventname'])
-# psych_cols = ['subjectkey', 'eventname','famhx_4_p', 'fam_history_5_yes_no', 'fam_history_6_yes_no', 'fam_history_7_yes_no', 'fam_history_8_yes_no', 
-#                  'fam_history_9_yes_no', 'fam_history_10_yes_no', 'fam_history_11_yes_no', 'fam_history_12_yes_no', 'fam_history_13_yes_no']
-# #create reduced df containing yes/no responses to family history questions 
-# fhx_small = fhx[psych_cols]
-# #drop NaN rows
-# count_nans(fhx_small) #144 NaNs per column
-# fhx_nonan = fhx_small.dropna()
-# #replace value '999' (don't know) with 0
-# num_cols = ['famhx_4_p', 'fam_history_5_yes_no', 'fam_history_6_yes_no', 'fam_history_7_yes_no', 'fam_history_8_yes_no', 
-#                  'fam_history_9_yes_no', 'fam_history_10_yes_no', 'fam_history_11_yes_no', 'fam_history_12_yes_no', 'fam_history_13_yes_no']
-# for col in num_cols:
-#     fhx_nonan[col] = pd.to_numeric(fhx_nonan[col])
-#     fhx_nonan.loc[fhx_nonan[col] == 999, [col]] = 0
-# #add together total endorsed questions
-# fhx_totals = fhx_nonan
-# fhx_totals['fhx_total'] = fhx_totals[num_cols].sum(axis=1)
-# #separate more ambiguous questions surrounding substance use and general "trouble" from other mental health history questions
-# fhx_totals['subs_total'] = fhx_totals[['famhx_4_p', 'fam_history_5_yes_no', 'fam_history_9_yes_no']].sum(axis=1)
-# fhx_totals['mh_totals'] = fhx_totals[['fam_history_6_yes_no', 'fam_history_7_yes_no', 'fam_history_8_yes_no', 'fam_history_10_yes_no', 'fam_history_11_yes_no', 'fam_history_12_yes_no', 'fam_history_13_yes_no']].sum(axis=1)
-# #count how many participants fall into each group
-# all_count = 0
-# mh_count = 0
-# for row in fhx_totals.index:
-#     if fhx_totals['fhx_total'][row] == 0:
-#         all_count += 1
-#     if fhx_totals['mh_totals'][row] == 0:
-#         mh_count += 1
-# print('Fhx totals LR count =')
-# print(all_count)
-# print('fhx mh total LR count =')
-# print(mh_count)
-# #merge shortened PPS df with fhx df
-# no_PQBC_small = no_PQBC[['subjectkey', 'PQBC_total_endorsed']]
-# risk_df = fhx_totals.merge(no_PQBC_small, on = 'subjectkey')
-# #remove any participants who had family members with mental health history
-# no_risk_df = risk_df.loc[lambda risk_df: risk_df['mh_totals'] == 0]
-# #make list of subjectkeys
-# no_risk_list = no_risk_df['subjectkey'].tolist()
-# #remove higher risk LR pts from PPS df
-# pps_refined = pps
-# pps_refined['risky_LR'] = 0
-# for row in pps_refined.index: 
-#     if pps_refined['group'][row] == 0:
-#         if pps_refined['subjectkey'][row] not in no_risk_list:
-#             pps_refined['risky_LR'][row] = 1
-# #remove any pt with family history of mental health problems
-# pps_refined = pps_refined.loc[lambda pps_refined: pps_refined['risky_LR'] == 0]
-# #save shortened pps df to file
-# pps_refined.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/pps_refined_LR.csv')
 # %%
 ####
 #Remove any LR participants with first-degree relative family history of mental illness
@@ -126,6 +132,7 @@ fam_hx_qs =['subjectkey', 'fam_history_q6a_depression', 'fam_history_q6d_depress
  'q13l_full_sib_old1_suicide', 'q13l_full_sib_old2_suicide', 'q13l_full_sib_old3_suicide', 'q13l_full_sib_old4_suicide', 'q13l_full_sib_old5_suicide', 
  'q13m_full_sib_same1_suicide', 'q13m_full_sib_same2_suicide']
 #pull columns pertaining to first degree relatives 
+fhx = fhx_1.merge(fhx_2, on= 'subjectkey')
 fhx_qs = fhx[fam_hx_qs]
 fam_hx_qs = fam_hx_qs.pop[0]
 #make numeric and replace value 999 (don't know) with 0
@@ -156,6 +163,86 @@ for row in pps_refined.index:
             pps_refined['risky_LR'][row] = 1
 #remove any pt with family history of mental health problems
 pps_refined = pps_refined.loc[lambda pps_refined: pps_refined['risky_LR'] == 0]
+pps_refined = pps_refined.drop(columns= ['risky_LR'])
 #save shortened pps df to file
 pps_refined.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/pps_refined_LR.csv')
+# %%
+####
+#Match participant HR adn LR groups by age, sex, and ethnicity
+#merge demos with refined pps df
+pps_r_2 = pps_refined.loc[pps_refined['visit'] == 2]
+pps_r_short = pps_r_2[['subjectkey', 'group']]
+demos_r_grouped = demos.merge(pps_r_short, on = 'subjectkey')
+#add interview_age column to demos_r_grouped
+pps_age = pps01.loc[pps01['visit'] == '2_year_follow_up_y_arm_1']
+pps_age = pps_age[['subjectkey', 'interview_age']]
+demos_r_grouped = demos.merge(pps_age, on= 'subjectkey')
+demos_r_grouped = demos_r_grouped.merge(pps_r_short, on = 'subjectkey')
+#convert interview_age to numeric and separate HR and LR participants
+demos_r_grouped['interview_age'] = pd.to_numeric(demos_r_grouped['interview_age'])
+demos_r_HR = demos_r_grouped.loc[demos_r_grouped['group'] == 1]
+demos_r_LR = demos_r_grouped.loc[demos_r_grouped['group'] == 0]
+# %%
+####
+#test for significant differences in demographics 
+dems_dict = {}
+contingency_table1 = pd.crosstab(demos_r_grouped['group'], demos_r_grouped['sex'])
+dems_dict['sex_chi'] = chi2_contingency(contingency_table1) # p = 0.1393
+contingency_table2 = pd.crosstab(demos_r_grouped['group'], demos_r_grouped['income'])
+dems_dict['income_chi'] = chi2_contingency(contingency_table2) # p = 2.2024E-69
+contingency_table3 = pd.crosstab(demos_r_grouped['group'], demos_r_grouped['p_edu'])
+dems_dict['p_edu_chi'] = chi2_contingency(contingency_table3) # p = 9.471E-27
+contingency_table4 = pd.crosstab(demos_r_grouped['group'], demos_r_grouped['race'])
+dems_dict['ethnicity_chi'] = chi2_contingency(contingency_table4) # p = 1.4036E-48
+dems_dict['age'] = stats.ttest_ind(demos_r_HR['interview_age'], demos_r_LR['interview_age'], equal_var= False) # p = 3.0178E-06
+print(dems_dict)
+demos_r_LR.describe()
+#results indicate that groups must be matched for sex, age, and ethnicity
+# %%
+####
+#Prepare data for R MatchIt
+#drop NaN values
+#save demos_r_grouped to file
+#demos_r_grouped = demos_r_grouped.drop(columns=['Unnamed: 0'])
+demos_r_grouped_short = demos_r_grouped[['subjectkey', 'interview_age', 'sex', 'race', 'group']]
+demos_r_grouped_short = demos_r_grouped_short.dropna()
+demos_r_grouped_short['race'] = pd.to_numeric(demos_r_grouped_short['race'])
+demos_r_grouped_short.loc[demos_r_grouped_short['race'] == 1, ['race']] = 'white'
+demos_r_grouped_short.loc[demos_r_grouped_short['race'] == 2, ['race']] = 'black'
+demos_r_grouped_short.loc[demos_r_grouped_short['race'] == 3, ['race']] = 'hispanic'
+demos_r_grouped_short.loc[demos_r_grouped_short['race'] == 4, ['race']] = 'other'
+#demos_r_grouped.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/pps_T2_demos.csv')
+#split into HR and LR dfs
+demos_r_HR = demos_r_grouped_short.loc[demos_r_grouped['group'] == 1]
+demos_r_LR = demos_r_grouped_short.loc[demos_r_grouped['group'] == 0]
+#save HR and LR dfs to file
+demos_r_HR.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/pps_T2_HR_demos.csv')
+demos_r_LR.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/pps_T2_LR_demos.csv')
+# %%
+####
+#R MatchIt group breakdown sanity check
+#isolate salient columns in matched df
+matched_short = matched_sample[['subjectkey', 'interview_age', 'sex', 'race', 'group.1']]
+matched_short = matched_short.rename(columns= {'group.1': 'group'})
+#isolate HR and LR groups into separate dfs
+matched_HR = matched_short.loc[matched_short['group'] == 1]
+matched_LR = matched_short.loc[matched_short['group'] == 0]
+# %%
+#perform statistical analysis of demos in group breakdown
+dems_dict = {}
+contingency_table1 = pd.crosstab(matched_short['group'], matched_short['sex'])
+dems_dict['sex_chi'] = chi2_contingency(contingency_table1) # p = 0.8326
+contingency_table4 = pd.crosstab(matched_short['group'], matched_short['race'])
+dems_dict['ethnicity_chi'] = chi2_contingency(contingency_table4) # p = 0.0688
+dems_dict['age'] = stats.ttest_ind(matched_HR['interview_age'], matched_LR['interview_age']) # p = 0.5759
+print(dems_dict)
+#none of the tests returned significant results
+# %%
+count_instances_race(matched_HR)
+# %%
+count_instances_race(matched_LR)
+# %%
+count_instances_sex(matched_HR)
+# %%
+count_instances_sex(matched_LR)
 # %%
