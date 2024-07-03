@@ -34,3 +34,7 @@ These findings are consistent with cognitive and gray matter deficits identified
 
 ### Low-Risk Group Breakdown
 
+It was necessary to refine the Low Risk group from the pool of 8,768 who endorsed 3 or fewer PQ-BC items at ABCD follow-up 2. Participants who endorsed any PQ-BC items at follow-up 2 were removed from the remaining lower-risk participants (LR n = 5,930). Participants whose parents had reported any first-degree relative history of depression, mania, psychosis, anxiety, as well as family members who had sought professional help or had been hospitalized for emotional/behavioral/substance disorders or committed suicide were also removed from the remaining lower-risk participants (LR = 3119). 
+(refer to LR_group_refinement.py)
+
+The remaining participants were then matched in terms of age, ethnicity, and sex using R library MatchIt, leaving 1,613 HR participants (40% white, 29% black, 24% hispanic, 6% other; 51% male, 49% female) and 1,613 LR participants (41% white, 26% black, 27% hispanic, 5% other; 51% male, 49% female).
