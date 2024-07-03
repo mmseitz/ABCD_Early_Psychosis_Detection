@@ -246,3 +246,26 @@ count_instances_sex(matched_HR)
 # %%
 count_instances_sex(matched_LR)
 # %%
+# %%
+####
+#Update pps df with completed high and low risk groupings
+low_risk_group = list(matched_LR['subjectkey'])
+high_risk_group = list(matched_HR['subjectkey'])
+pps_hr_lr = pps
+pps_hr_lr['risky_LR'] = 0
+for row in pps_hr_lr.index: 
+    if pps_hr_lr['group'][row] == 0:
+        if pps_hr_lr['subjectkey'][row] not in low_risk_group:
+            pps_hr_lr['risky_LR'][row] = 1
+    else:
+        if pps_hr_lr['subjectkey'][row] not in high_risk_group:
+            pps_hr_lr['risky_LR'][row] = 1
+#remove any LR participant not in matched df
+pps_hr_lr = pps_hr_lr.loc[lambda pps_refined: pps_refined['risky_LR'] == 0]
+pps_hr_lr = pps_hr_lr.drop(columns= ['risky_LR'])
+#save df to file
+pps_hr_lr.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/pps_hr_lr_all_fu.csv')
+#isolate df containing HR and LR at follow-up 2 only
+pps_hr_lr_2 = pps_hr_lr.loc[pps_hr_lr['visit'] == 2]
+#save T2 df to file
+pps_hr_lr_2.to_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/PQ-BC/pps_hr_lr_t2.csv')
