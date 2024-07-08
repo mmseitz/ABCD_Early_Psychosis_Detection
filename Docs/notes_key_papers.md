@@ -107,3 +107,28 @@ Papers and citations in Zotero
 - ABCD has 21 nationally distributed data collection sites
 - ABCD study assessments encompass seven domains: substance use, mental health, physical health and biospecimens, neurocognition, gender identity and sexual health, culture and environment, and brain imaging
 
+### ABCD and Psychosis Risk
+(Karcher et al., 2024)
+- Psychotic Like Experiences (PLEs) Include unusual thought content, including unconventional beliefs, and perceptual abnormalities, including auditory and visual distortions, that like on the lower end of the psychosis spectrum continuum
+    - Although PLEs generally refer to non-clinical forms of psychosis spectrum symptoms, individuals experiencing PLEs in childhood and adolescence show greater odds of developing diagnosable health concerns, including psychosis, in adulthood
+- According to the expanded proneness-persistence-impairment model (PPI model), most PLEs may be more benign and transient because exposure to additional environmental risks and/or stronger genetic/early environmental diathesis (potentially reflected in increased expression of pathophysiology over development) is necessary for subclinical psychosis to first become distressing and persistent and, second, to deteriorate into a clinical psychotic state
+- Risk factors associated with early PLEs include family history of psychosis, delayed developmental milestones, early cognitive deficits, structural and functional neural impairments, internalizing symptoms, ACEs
+- Unclear which risk factors are the most important markers of clinically significant PLEs—paper uses ML approach--aims to capture multivariate patterns of risk factors for early PLEs
+- this study aimed to use random forest classifications to examine the most important predictors of distress and persistence of PLEs measured over three time points when examining a range of multi-modal predictors measured at baseline, with predictors spanning caregiver- and self-report symptoms and experiences, neural metrics, and neurocognition
+- study uses baseline, follow up 1, and follow up 2 data
+- Measures used: PQ-BC, KSADS, caregiver reported developmental motor and speech milestone delays, ACE, NIH Toolbox, structural MRI measures (average prefrontal cortical thickness), resting state functional connectivity
+- Dichotomous distress factor was coded as one for individuals with >= 1.96 SDs above the mean of stress scores on the PQ-BC, with all other scores coded as zero
+- Dichotomous persistence factor was coded as one if individuals met the above definition of distressing PLEs for two or more of the three waves of data
+- low level PLE group matched by age, ethnicity, and sex
+- ML techniques are becoming more widespread in psychiatric research. Random forest regressions are well suited for psychiatric research in large scale datasets, as this technique can handle the inclusion of many predictors simultaneously and is robust in its predictive accuracy even for many predictors with small effects
+- Distinguishing persistent distressing versus low level PLEs: influential predictors included ACEs, internalizing symptoms, and fluid and crystalized cognition composites (also model with highest accuracy)
+- Highest model accuracy was found if constraining the persistent distressing group to those that met criteria at all three waves
+- Regardless of PLE group definition, the most important factors distinguishing higher PLE groups from lower PLE groups were internalizing symptoms and ACEs, with some evidence for cognitive factors showing greater importance relative to other factors
+- PLEs are a heterogenous construct, with only a subset at risk for the development of a psychosis spectrum illness, although others developing other mental health conditions
+- The results point to the importance of including factors that increase the clinical relevance of these endorsements, including persistence over time, when examining PLEs in large general population samples
+- Analyses from the present work showed few metrics consistently distinguishing persistent distressing from other PLE groups, but these metrics included ACEs, highlighting the importance of stressful life events
+- Previous research indicates that traumatic life events may be an important predictor of worsening psychotic symptoms, including up to 80% of individuals at high risk for psychosis endorsing a traumatic event in childhood
+- The overall results may point to the heterogeneity of PLEs, with this heterogeneity perhaps masking the ability to uncover unifying risk factors. The heterogeneity of transient PLEs is highlighted by the poor accuracy of these groups regardless of how defined. Therefore, it may not be until the worsening of symptoms or onset of functional impairment that symptoms are of sufficient severity to be distinguished from less severe PLEs
+- Analyses indicate that ML analyses can be used to distinguish persistent distressing from low level PLE groups. Additional evidence indicated that distress may be more distinguishable than persistence, including evidence that models performed poorly when trying to distinguish persistent from transient distressing PLEs
+- The work also reinforces the importance of several metrics that have been previously implicated in the development and worsening of early psychotic experiences. ACEs appeared especially important for persistent distressing PLEs, potentially providing support for the PPI model—that worsening PLEs is linked to greater environmental loading. Both persistent and transient distressing PLEs were linked to risk factors including internalizing symptoms. 
+
