@@ -138,6 +138,14 @@ sbfs_RF = sbfs_RF.fit(X_train, y_train)
 selected_features = X_train.columns[list(sbfs_RF.k_feature_idx_)]
 print(selected_features)
 print(sbfs_RF.k_score_)
+
+####Output
+#Index(['tfmri_ma_alvcr_b_scs_tprh', 'tfmri_sst_all_beh_s_nt',
+#       'tfmri_sacgvf_bscs_pulh', 'tfmri_nback_all_51', 'tfmri_nback_all_148',
+#       'tfmri_nback_all_185', 'tfmri_nback_all_186', 'tfmri_nback_all_214',
+#       'smri_thick_cdk_ptcaterh', 'nihtbx_flanker_agecorrected'],
+#      dtype='object')
+#0.6207487335184898
 # %%
 #####
 #Recursive Feature Selection
@@ -160,3 +168,7 @@ for i in range(len(visualizer.ranking_)):
         cols.append(X_train.columns[i])
 
 print(cols)
+#cols: ['tfmri_sst_beh_performflag', 'tfmri_sst_all_beh_crgo_rt', 'tfmri_sst_all_beh_crgo_mrt', 'tfmri_sst_all_beh_crlg_nt', 
+# 'tfmri_sacgvf_bscs_crbcxlh', 'tfmri_sacgvf_bscs_crbcxrh', 'tfmri_saigvcg_bscs_pulh', 'tfmri_saigvcg_bscs_purh', 'tfmri_nback_all_208', 
+# 'tfmri_nback_all_215', 'smri_vol_cdk_paracnrh', 'nihtbx_flanker_agecorrected', 'nihtbx_pattern_agecorrected', 'nihtbx_flanker_fc', 'nihtbx_pattern_fc',
+#  'lmt_scr_avg_rt', 'lmt_scr_rt_correct']
