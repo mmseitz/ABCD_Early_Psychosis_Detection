@@ -172,3 +172,79 @@ print(cols)
 # 'tfmri_sacgvf_bscs_crbcxlh', 'tfmri_sacgvf_bscs_crbcxrh', 'tfmri_saigvcg_bscs_pulh', 'tfmri_saigvcg_bscs_purh', 'tfmri_nback_all_208', 
 # 'tfmri_nback_all_215', 'smri_vol_cdk_paracnrh', 'nihtbx_flanker_agecorrected', 'nihtbx_pattern_agecorrected', 'nihtbx_flanker_fc', 'nihtbx_pattern_fc',
 #  'lmt_scr_avg_rt', 'lmt_scr_rt_correct']
+
+# %%
+ok_cols = ['tfmri_sst_beh_performflag', 'tfmri_sst_all_beh_crgo_rt', 'tfmri_sst_all_beh_crgo_mrt', 'tfmri_sst_all_beh_crlg_nt', 
+        'tfmri_sacgvf_bscs_crbcxlh', 'tfmri_sacgvf_bscs_crbcxrh', 'tfmri_saigvcg_bscs_pulh', 'tfmri_saigvcg_bscs_purh', 'tfmri_nback_all_208', 
+        'tfmri_nback_all_215', 'smri_vol_cdk_paracnrh', 'nihtbx_flanker_agecorrected', 'nihtbx_pattern_agecorrected', 'nihtbx_flanker_fc', 'nihtbx_pattern_fc',
+        'lmt_scr_avg_rt', 'lmt_scr_rt_correct', 'tfmri_ma_alrvn_b_scs_ayrh', 'tfmri_ma_rpvnfb_b_cds_clcgelh',
+       'tfmri_ma_rpvnfb_b_cds_roagelh', 'tfmri_sst_beh_performflag',
+       'tfmri_sst_all_beh_crgo_rt', 'tfmri_sst_all_beh_incrlg_nt',
+       'tfmri_sacgvf_bscs_crbwmlh', 'tfmri_sacgvf_bscs_crbwmrh',
+       'tfmri_sacgvf_bscs_crbcxrh', 'tfmri_sacgvf_bscs_pdrh',
+       'tfmri_saigvcg_bscs_crbwmrh', 'tfmri_saigvcg_bscs_crbcxrh',
+       'tfmri_nback_all_73', 'tfmri_nback_all_83', 'tfmri_nback_all_178',
+       'tfmri_nback_all_214', 'tfmri_nback_all_223', 'tfmri_nback_all_232',
+       'tfmri_nback_all_262', 'tfmri_rec_all_beh_posf_dpr',
+       'tfmri_rec_all_beh_negface_pr', 'tfmri_rec_all_beh_negf_dp',
+       'smri_thick_cdk_cuneuslh', 'smri_thick_cdk_rracatelh',
+       'smri_thick_cdk_rrmdfrlh', 'smri_thick_cdk_sufrlh',
+       'smri_thick_cdk_supllh', 'smri_thick_cdk_trvtmlh',
+       'smri_thick_cdk_parsopcrh', 'smri_thick_cdk_sufrrh',
+       'smri_vol_cdk_trvtmlh', 'smri_vol_cdk_iftmrh', 'smri_vol_cdk_paracnrh',
+       'sit_scr_values_count3', 'lmt_scr_num_timed_out', 'tfmri_mid_all_beh_hrwnfb_nt', 'tfmri_mid_all_beh_hlnfb_nt',
+       'tfmri_sst_beh_performflag', 'tfmri_sst_all_beh_crgo_mrt',
+       'tfmri_sst_all_beh_crgo_stdrt', 'tfmri_sacgvf_bscs_pulh',
+       'tfmri_saigvcg_bscs_pulh', 'tfmri_saigvcg_bscs_purh',
+       'tfmri_nback_all_215', 'smri_vol_cdk_paracnrh', 'tfmri_ma_lvnfb_b_cds_clatcgelh', 'tfmri_sst_nbeh_nruns',
+       'tfmri_sst_all_beh_crgo_nt', 'tfmri_sst_all_beh_crlg_nt',
+       'tfmri_sst_all_beh_incrlg_rt', 'tfmri_sacgvf_bscs_crbcxrh',
+       'tfmri_sacgvf_bscs_purh', 'tfmri_sacsvcg_bscs_crbcxlh',
+       'tfmri_saasvcg_bscs_tplh', 'tfmri_saasvcg_bscs_aalh',
+       'tfmri_sacsvis_bscs_aarh', 'tfmri_nback_all_148', 'tfmri_nback_all_154',
+       'tfmri_nback_all_185', 'tfmri_nback_all_216', 'tfmri_nback_all_224',
+       'tfmri_nback_all_237', 'tfmri_rec_all_beh_newnf_hr',
+       'tfmri_rec_all_beh_negface_pr', 'smri_thick_cdk_fusiformlh',
+       'smri_thick_cdk_iftmlh', 'smri_thick_cdk_parsobislh',
+       'smri_thick_cdk_pclh', 'smri_thick_cdk_smlh', 'smri_thick_cdk_frpolelh',
+       'smri_thick_cdk_trvtmlh', 'smri_thick_cdk_banksstsrh',
+       'smri_thick_cdk_ifplrh', 'smri_thick_cdk_insularh',
+       'smri_vol_cdk_rrmdfrrh', 'sit_scr_expr_mratdiff1', 'nihtbx_pattern_fc', 'tfmri_ma_alvcr_b_scs_tprh', 'tfmri_sst_all_beh_s_nt',
+       'tfmri_sacgvf_bscs_pulh', 'tfmri_nback_all_51', 'tfmri_nback_all_148',
+       'tfmri_nback_all_185', 'tfmri_nback_all_186', 'tfmri_nback_all_214',
+       'smri_thick_cdk_ptcaterh', 'nihtbx_flanker_agecorrected']
+no_doubles = []
+for l in ok_cols:
+    if l in no_doubles:
+        pass
+    else:
+        no_doubles.append(l)
+# %%
+X_train_reduced = X_train[no_doubles]
+X_test_reduced = X_test[no_doubles]
+# %%
+X_test_reduced.to_csv('/Users/madeleineseitz/Desktop/X_test_reduced.csv')
+X_train_reduced.to_csv('/Users/madeleineseitz/Desktop/X_train_reduced.csv')
+# %%
+X_train = pd.read_csv('/Users/madeleineseitz/Desktop/feature selection data/cog_anat_model/X_train_matched_data.csv')
+X_test = pd.read_csv('/Users/madeleineseitz/Desktop/feature selection data/cog_anat_model/X_test_matched_data.csv')
+# %%
+print(no_doubles)
+# %%
+['tfmri_sst_beh_performflag', 'tfmri_sst_all_beh_crgo_rt', 'tfmri_sst_all_beh_crgo_mrt', 'tfmri_sst_all_beh_crlg_nt', 
+ 'tfmri_sacgvf_bscs_crbcxlh', 'tfmri_sacgvf_bscs_crbcxrh', 'tfmri_saigvcg_bscs_pulh', 'tfmri_saigvcg_bscs_purh', 
+ 'tfmri_nback_all_208', 'tfmri_nback_all_215', 'smri_vol_cdk_paracnrh', 'nihtbx_flanker_agecorrected', 
+ 'nihtbx_pattern_agecorrected', 'nihtbx_flanker_fc', 'nihtbx_pattern_fc', 'lmt_scr_avg_rt', 'lmt_scr_rt_correct',
+'tfmri_ma_alrvn_b_scs_ayrh', 'tfmri_ma_rpvnfb_b_cds_clcgelh', 'tfmri_ma_rpvnfb_b_cds_roagelh', 'tfmri_sst_all_beh_incrlg_nt',
+'tfmri_sacgvf_bscs_crbwmlh', 'tfmri_sacgvf_bscs_crbwmrh', 'tfmri_sacgvf_bscs_pdrh', 'tfmri_saigvcg_bscs_crbwmrh', 
+'tfmri_saigvcg_bscs_crbcxrh', 'tfmri_nback_all_73', 'tfmri_nback_all_83', 'tfmri_nback_all_178', 'tfmri_nback_all_214', 
+'tfmri_nback_all_223', 'tfmri_nback_all_232', 'tfmri_nback_all_262', 'tfmri_rec_all_beh_posf_dpr', 'tfmri_rec_all_beh_negface_pr', 'tfmri_rec_all_beh_negf_dp', 'smri_thick_cdk_cuneuslh', 'smri_thick_cdk_rracatelh',
+'smri_thick_cdk_rrmdfrlh', 'smri_thick_cdk_sufrlh', 'smri_thick_cdk_supllh', 'smri_thick_cdk_trvtmlh', 'smri_thick_cdk_parsopcrh', 'smri_thick_cdk_sufrrh', 'smri_vol_cdk_trvtmlh', 'smri_vol_cdk_iftmrh',
+'sit_scr_values_count3', 'lmt_scr_num_timed_out', 'tfmri_mid_all_beh_hrwnfb_nt', 'tfmri_mid_all_beh_hlnfb_nt', 
+'tfmri_sst_all_beh_crgo_stdrt', 'tfmri_sacgvf_bscs_pulh', 'tfmri_ma_lvnfb_b_cds_clatcgelh', 'tfmri_sst_nbeh_nruns', 'tfmri_sst_all_beh_crgo_nt', 'tfmri_sst_all_beh_incrlg_rt', 'tfmri_sacgvf_bscs_purh', 'tfmri_sacsvcg_bscs_crbcxlh', 
+'tfmri_saasvcg_bscs_tplh', 'tfmri_saasvcg_bscs_aalh', 'tfmri_sacsvis_bscs_aarh', 'tfmri_nback_all_148',
+'tfmri_nback_all_154', 'tfmri_nback_all_185', 'tfmri_nback_all_216', 'tfmri_nback_all_224', 'tfmri_nback_all_237',
+'tfmri_rec_all_beh_newnf_hr', 'smri_thick_cdk_fusiformlh', 'smri_thick_cdk_iftmlh', 'smri_thick_cdk_parsobislh',
+'smri_thick_cdk_pclh', 'smri_thick_cdk_smlh', 'smri_thick_cdk_frpolelh', 'smri_thick_cdk_banksstsrh',
+'smri_thick_cdk_ifplrh', 'smri_thick_cdk_insularh', 'smri_vol_cdk_rrmdfrrh', 'sit_scr_expr_mratdiff1',
+'tfmri_ma_alvcr_b_scs_tprh', 'tfmri_sst_all_beh_s_nt', 'tfmri_nback_all_51', 'tfmri_nback_all_186', 'smri_thick_cdk_ptcaterh']
