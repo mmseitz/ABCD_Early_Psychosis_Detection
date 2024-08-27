@@ -1,4 +1,4 @@
-#This script preprocesses anatomical, behavioral and fMRI task data that will be fed into the Scikit-Learn ML models 
+#This script preprocesses behavioral and fMRI task data that will be fed into the Scikit-Learn ML models 
 # %%
 ####
 #Import libraries
@@ -30,70 +30,9 @@ print('done!')
 # %%
 #### Import raw data
 print('Importing raw data...', end="")
-#Demographics data
-grouped_demos = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Demos_and_Env/matched_demos.csv')
-grouped_demos = pd.DataFrame(grouped_demos)
-grouped_demos = grouped_demos.drop(['Unnamed: 0', 'Unnamed: 0.1'], axis=1)
-#Monetary Incentive Delay data
-#Behavioral data
-mid_behav = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/MID_files/mid_behav_reduced.csv')
-mid_behav = pd.DataFrame(mid_behav)
-mid_behav = mid_behav.drop(['Unnamed: 0'], axis=1)
-#Brain data
-mid_brain = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/MID_files/MID_brain/mid_brain_reduced.csv')
-mid_brain = pd.DataFrame(mid_brain)
-mid_brain = mid_brain.drop(['Unnamed: 0'], axis=1)
-#Stop Signal Task data
-#Behavioral data
-sst_behav = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Stop_Signal_Task/sst_reduced.csv')
-sst_behav = pd.DataFrame(sst_behav)
-sst_behav = sst_behav.drop(['Unnamed: 0'], axis=1)
-#Brain data
-sst_brain = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Stop_Signal_Task/SST_brain/sst_brain_reduced.csv')
-sst_brain = pd.DataFrame(sst_brain)
-sst_brain = sst_brain.drop(['Unnamed: 0'], axis=1)
-#Emotional N-Back data
-#behavioral data
-enb_behav = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Emotional_N_Back/enb_behav_reduced.csv')
-enb_behav = pd.DataFrame(enb_behav)
-enb_behav = enb_behav.drop(['Unnamed: 0'], axis=1)
-#brain data
-enb_brain = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Emotional_N_Back/N-Back_Brain/enb_brain_reduced.csv')
-enb_brain = pd.DataFrame(enb_brain)
-enb_brain = enb_brain.drop(['Unnamed: 0'], axis=1)
-#Game of Dice task
-gdt = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Game_of_Dice/gdt_reduced.csv')
-gdt = pd.DataFrame(gdt)
-gdt = gdt.drop(['Unnamed: 0'], axis=1)
-#Social Influence Task
-sit = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Social_Influence/social_influence_reduced.csv')
-sit = pd.DataFrame(sit)
-sit = sit.drop(['Unnamed: 0'], axis=1)
-#NIH Toolbox
-nihtb = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/NIH_Toolbox/nihtb_reduced.csv')
-nihtb = pd.DataFrame(nihtb)
-nihtb = nihtb.drop(['Unnamed: 0'], axis=1)
-#Little Man Task
-lmt = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Little_Man_Task/lmt_reduced.csv')
-lmt = pd.DataFrame(lmt)
-lmt = lmt.drop(['Unnamed: 0'], axis=1)
-print('done!')
-# %%
-####
-#merge dfs into one master df
-abcd = mid_behav.merge(mid_brain, on= ['subjectkey', 'eventname', 'interview_age'])
-abcd = abcd.merge(sst_behav, on= ['subjectkey', 'eventname', 'interview_age'])
-abcd = abcd.merge(sst_brain, on= ['subjectkey', 'eventname', 'interview_age'])
-abcd = abcd.merge(enb_brain, on= ['subjectkey', 'eventname', 'interview_age'])
-abcd = abcd.merge(enb_behav, on= ['subjectkey', 'eventname', 'interview_age'])
-#abcd = abcd.merge(anat, on= ['subjectkey', 'eventname', 'interview_age'])
-abcd = abcd.merge(gdt, on= ['subjectkey', 'eventname', 'interview_age'])
-abcd = abcd.merge(sit, on= ['subjectkey', 'eventname', 'interview_age'])
-abcd = abcd.merge(nihtb, on= ['subjectkey', 'eventname', 'interview_age'])
-abcd = abcd.merge(lmt, on= ['subjectkey', 'eventname', 'interview_age'])
-abcd = abcd.merge(grouped_demos, on= ['subjectkey', 'interview_age'])
-#abcd shape (2001, 505)--HR group = 968
-abcd = abcd.drop (columns= ['eventname'])
+abcd = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/ML/master_csvs_uniform/cog_abcd.csv')
+abcd = abcd.drop (columns= ['Unnamed: 0'])
+#abcd shape (1347, 362)--HR group = 647
 # %%
 """ DEFINE FEATURE CATEGORIES """
 # This script is set up as follows:
@@ -389,21 +328,20 @@ X_test = prepared_data[1]
 y_train = pd.DataFrame(X_train['group']) 
 X_train = prepared_data[0].drop(['group'], axis=1)
 # %%
-np.save("/Users/madeleineseitz/Desktop/X_train_matched_data_cog_only.npy", X_train)
-np.save("/Users/madeleineseitz/Desktop/y_train_matched_data_cog_only.npy", y_train)
+np.save("/Users/madeleineseitz/Desktop/X_train_cog_only_data.npy", X_train)
+np.save("/Users/madeleineseitz/Desktop/y_train_cog_data.npy", y_train)
 X_train = pd.DataFrame(X_train)
 #X_train.columns = cols
-X_train.to_csv('/Users/madeleineseitz/Desktop/X_train_matched_data_cog_only.csv', index=None, header=True)
-y_train.to_csv('/Users/madeleineseitz/Desktop/y_train_matched_data_cog_only.csv', index=None, header=True)
+X_train.to_csv('/Users/madeleineseitz/Desktop/X_train_cog_only_data.csv', index=None, header=True)
+y_train.to_csv('/Users/madeleineseitz/Desktop/y_train_cog_only_data.csv', index=None, header=True)
 #y_test = pd.Series(X_test.group)
 y_test =  X_test[['group']]
-y_test.to_csv('/Users/madeleineseitz/Desktop/y_test_matched_data_cog_only.csv', index=None, header=True)
+y_test.to_csv('/Users/madeleineseitz/Desktop/y_test_cog_only_data.csv', index=None, header=True)
 y_test = y_test.to_numpy()
-np.save("/Users/madeleineseitz/Desktop/y_test_matched_data_cog_only.npy", y_test)
 X_test = prepared_data[1].drop(['group'], axis=1)
-np.save("/Users/madeleineseitz/Desktop/X_test_matched_data_cog_only.npy", X_test)
+np.save("/Users/madeleineseitz/Desktop/X_test_cog_only_data.npy", X_test)
+np.save("/Users/madeleineseitz/Desktop/y_test_cog_only_data.npy", y_test)
 X_test = pd.DataFrame(X_test)
 #X_test.columns = cols
-X_test.to_csv('/Users/madeleineseitz/Desktop/X_test_matched_data_cog_only.csv', index=None, header=True)
-#y_test.to_csv('/Users/madeleineseitz/Desktop/y_test_matched_data_cog_only.csv', index=None, header=True)
+X_test.to_csv('/Users/madeleineseitz/Desktop/X_test_cog_only_data.csv', index=None, header=True)
 # %%

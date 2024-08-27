@@ -1,4 +1,4 @@
-#This script preprocesses anatomical, behavioral and fMRI task data that will be fed into the Scikit-Learn ML models 
+#This script preprocesses anatomical data that will be fed into the Scikit-Learn ML models 
 # %%
 ####
 #Import libraries
@@ -31,19 +31,9 @@ print('done!')
 #### Import raw data
 print('Importing raw data...', end="")
 #Structural data
-anat = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Structural_Scans/structural_data.csv')
-anat = pd.DataFrame(anat)
-anat = anat.drop(['Unnamed: 0', 'sex'], axis=1)
-#Demographics data
-grouped_demos = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/Demos_and_Env/matched_demos.csv')
-grouped_demos = pd.DataFrame(grouped_demos)
-grouped_demos = grouped_demos.drop(['Unnamed: 0', 'Unnamed: 0.1'], axis=1)
-# %%
-####
-#merge dfs into one master df
-abcd = anat.merge(grouped_demos, on= ['subjectkey'])
-#abcd shape (1370, 362)
-abcd = abcd.drop (columns= ['eventname'])
+abcd = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/ML/master_csvs_uniform/anat_abcd.csv')
+abcd = abcd.drop(columns=['Unnamed: 0'])
+#abcd shape (1347, 149) HR group # 647
 # %%
 """ DEFINE FEATURE CATEGORIES """
 # This script is set up as follows:
@@ -51,7 +41,7 @@ abcd = abcd.drop (columns= ['eventname'])
 # 2. Identify brain data (including average across hemispheres). At this point, if you want to include a continuous
 # behavior predictor ('num_predictors'), identify it separately and include it in the Feature Data Pipeline
 # 2. Regress confounds on to brain data.
-num_confound_cols = ['interview_age_x']
+num_confound_cols = ['interview_age']
 cat_confound_cols = ['sex', 'p_edu', 'income', 'race']
 
 # Predictive Features
@@ -339,20 +329,20 @@ X_test = prepared_data[1]
 y_train = pd.DataFrame(X_train['group']) 
 X_train = prepared_data[0].drop(['group'], axis=1)
 # %%
-np.save("/Users/madeleineseitz/Desktop/X_train_anat_data.npy", X_train)
+np.save("/Users/madeleineseitz/Desktop/X_train_anat_only_data.npy", X_train)
 np.save("/Users/madeleineseitz/Desktop/y_train_anat_data.npy", y_train)
 X_train = pd.DataFrame(X_train)
 #X_train.columns = cols
-X_train.to_csv('/Users/madeleineseitz/Desktop/X_train_anat_data.csv', index=None, header=True)
-y_train.to_csv('/Users/madeleineseitz/Desktop/y_train_anat_data.csv', index=None, header=True)
+X_train.to_csv('/Users/madeleineseitz/Desktop/X_train_anat_only_data.csv', index=None, header=True)
+y_train.to_csv('/Users/madeleineseitz/Desktop/y_train_anat_only_data.csv', index=None, header=True)
 #y_test = pd.Series(X_test.group)
 y_test =  X_test[['group']]
-y_test.to_csv('/Users/madeleineseitz/Desktop/y_test_anat_data.csv', index=None, header=True)
+y_test.to_csv('/Users/madeleineseitz/Desktop/y_test_anat_only_data.csv', index=None, header=True)
 y_test = y_test.to_numpy()
-np.save("/Users/madeleineseitz/Desktop/y_test_anat_data.npy", y_test)
 X_test = prepared_data[1].drop(['group'], axis=1)
-np.save("/Users/madeleineseitz/Desktop/X_test_anat_data.npy", X_test)
+np.save("/Users/madeleineseitz/Desktop/X_test_anat_only_data.npy", X_test)
+np.save("/Users/madeleineseitz/Desktop/y_test_anat_only_data.npy", y_test)
 X_test = pd.DataFrame(X_test)
 #X_test.columns = cols
-X_test.to_csv('/Users/madeleineseitz/Desktop/X_test_anat_data.csv', index=None, header=True)
+X_test.to_csv('/Users/madeleineseitz/Desktop/X_test_anat_only_data.csv', index=None, header=True)
 # %%

@@ -1,4 +1,4 @@
-#This script preprocesses environmental data that will be fed into the Scikit-Learn ML models 
+#This script preprocesses environmental, cognitive (behavioral and fMRI), and anatomical data that will be fed into the Scikit-Learn ML models 
 # %%
 ####
 #Import libraries
@@ -30,8 +30,9 @@ print('done!')
 # %%
 #### Import raw data
 print('Importing raw data...', end="")
-abcd = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/ML/master_csvs_uniform/env_abcd.csv')
-abcd = abcd.drop(columns= ['Unnamed: 0'])
+abcd = pd.read_csv('/Users/madeleineseitz/Desktop/thesis/ABCD_Project/csvs/ML/master_csvs_uniform/uniform_abcd.csv')
+abcd = abcd.drop(columns=['Unnamed: 0'])
+#abcd shape (1357, 514) #HR group = 647
 # %%
 """ DEFINE FEATURE CATEGORIES """
 # This script is set up as follows:
@@ -46,9 +47,10 @@ cat_confound_cols = ['sex', 'race']
 cat_predictors = ['p_edu', 'income', 'motor_dev_comparison', 'speech_dev_comparison']
 oth_predictors = ['ple_y_ss_total_bad', 'ple_y_ss_affected_bad_sum', 'peq_ss_overt_aggression', 'peq_ss_relational_aggs', 'peq_ss_overt_victim', 'total_substances_used',
               'weeks_preterm', 'injury_totals']
-# %%
-#note shape
-abcd.shape #shape (1347, 17) HR n = 647
+cort_cols = list(abcd)[2:-15]
+
+#dropnans
+abcd = abcd.dropna()
 # %%
 """ DEFINE AND APPLY TRAIN/TEST SPLIT """
 print('Define train/test split...', end="")
@@ -124,17 +126,17 @@ class AverageHemi(BaseEstimator, TransformerMixin):
 # here in the 'othernum_pipeline'. To use this, you have to also specify a list of other numerical predictors (e.g.
 # continuous behavioral measures, age etc.
 
-# numpred_pipeline = Pipeline([
-#     ('selector_numpred', FeatureSelector(cort_cols, select_features=True)),
-# ])
+numpred_pipeline = Pipeline([
+    ('selector_numpred', FeatureSelector(cort_cols, select_features=True)),
+])
 
 othernum_pipeline = Pipeline([
    ('selector_othernum', FeatureSelector(oth_predictors, select_features=True)),
 ])
 
 feature_pipeline = FeatureUnion(transformer_list=[
-    #('numpred_pipeline', numpred_pipeline)
-    ('othernum_pipeline', othernum_pipeline),
+    ('numpred_pipeline', numpred_pipeline),
+    ('othernum_pipeline', othernum_pipeline)
 ])
 # %%
 # This preprocesses the categorical confounds (i.e. one hot encoding), and gathers the continuous confounds such as age etc.
@@ -186,7 +188,7 @@ for dataset in data:
     features_prepared = feature_pipeline.fit_transform(dataset)
     
     # Rename all features - include continuous features if needed
-    features_prepared = pd.DataFrame(features_prepared, columns=[oth_predictors])
+    features_prepared = pd.DataFrame(features_prepared, columns=[cort_cols + oth_predictors])
     feat_data.append(features_prepared)
 
     # Prepare confounds
@@ -452,20 +454,46 @@ X_test = prepared_data[1]
 y_train = pd.DataFrame(X_train['group']) 
 X_train = prepared_data[0].drop(['group'], axis=1)
 # %%
-np.save("/Users/madeleineseitz/Desktop/X_train_env_data.npy", X_train)
-np.save("/Users/madeleineseitz/Desktop/y_train_env_data.npy", y_train)
+np.save("/Users/madeleineseitz/Desktop/X_train_all_data.npy", X_train)
+np.save("/Users/madeleineseitz/Desktop/y_train_all_data.npy", y_train)
 X_train = pd.DataFrame(X_train)
 #X_train.columns = cols
-X_train.to_csv('/Users/madeleineseitz/Desktop/X_train_env_data.csv', index=None, header=True)
-y_train.to_csv('/Users/madeleineseitz/Desktop/y_train_env_data.csv', index=None, header=True)
+X_train.to_csv('/Users/madeleineseitz/Desktop/X_train_all_data.csv', index=None, header=True)
+y_train.to_csv('/Users/madeleineseitz/Desktop/y_train_all_data.csv', index=None, header=True)
 #y_test = pd.Series(X_test.group)
 y_test =  X_test[['group']]
-y_test.to_csv('/Users/madeleineseitz/Desktop/y_test_env_data.csv', index=None, header=True)
+y_test.to_csv('/Users/madeleineseitz/Desktop/y_test_all_data.csv', index=None, header=True)
 y_test = y_test.to_numpy()
 X_test = prepared_data[1].drop(['group'], axis=1)
-np.save("/Users/madeleineseitz/Desktop/X_test_env_data.npy", X_test)
-np.save("/Users/madeleineseitz/Desktop/y_test_env_data.npy", y_test)
+np.save("/Users/madeleineseitz/Desktop/X_test_all_data.npy", X_test)
+np.save("/Users/madeleineseitz/Desktop/y_test_all_data.npy", y_test)
 X_test = pd.DataFrame(X_test)
 #X_test.columns = cols
-X_test.to_csv('/Users/madeleineseitz/Desktop/X_test_env_data.csv', index=None, header=True)
+X_test.to_csv('/Users/madeleineseitz/Desktop/X_test_all_data.csv', index=None, header=True)
+# %%
+# selected_cols = ['tfmri_sst_beh_performflag', 'tfmri_sst_all_beh_crgo_rt', 'tfmri_sst_all_beh_crgo_mrt', 'tfmri_sst_all_beh_crlg_nt', 
+#  'tfmri_sacgvf_bscs_crbcxlh', 'tfmri_sacgvf_bscs_crbcxrh', 'tfmri_saigvcg_bscs_pulh', 'tfmri_saigvcg_bscs_purh', 
+#  'tfmri_nback_all_208', 'tfmri_nback_all_215', 'smri_vol_cdk_paracnrh', 'nihtbx_flanker_agecorrected', 
+#  'nihtbx_pattern_agecorrected', 'nihtbx_flanker_fc', 'nihtbx_pattern_fc', 'lmt_scr_avg_rt', 'lmt_scr_rt_correct',
+# 'tfmri_ma_alrvn_b_scs_ayrh', 'tfmri_ma_rpvnfb_b_cds_clcgelh', 'tfmri_ma_rpvnfb_b_cds_roagelh', 'tfmri_sst_all_beh_incrlg_nt',
+# 'tfmri_sacgvf_bscs_crbwmlh', 'tfmri_sacgvf_bscs_crbwmrh', 'tfmri_sacgvf_bscs_pdrh', 'tfmri_saigvcg_bscs_crbwmrh', 
+# 'tfmri_saigvcg_bscs_crbcxrh', 'tfmri_nback_all_73', 'tfmri_nback_all_83', 'tfmri_nback_all_178', 'tfmri_nback_all_214', 
+# 'tfmri_nback_all_223', 'tfmri_nback_all_232', 'tfmri_nback_all_262', 'tfmri_rec_all_beh_posf_dpr', 'tfmri_rec_all_beh_negface_pr', 'tfmri_rec_all_beh_negf_dp', 'smri_thick_cdk_cuneuslh', 'smri_thick_cdk_rracatelh',
+# 'smri_thick_cdk_rrmdfrlh', 'smri_thick_cdk_sufrlh', 'smri_thick_cdk_supllh', 'smri_thick_cdk_trvtmlh', 'smri_thick_cdk_parsopcrh', 'smri_thick_cdk_sufrrh', 'smri_vol_cdk_trvtmlh', 'smri_vol_cdk_iftmrh',
+# 'sit_scr_values_count3', 'lmt_scr_num_timed_out', 'tfmri_mid_all_beh_hrwnfb_nt', 'tfmri_mid_all_beh_hlnfb_nt', 
+# 'tfmri_sst_all_beh_crgo_stdrt', 'tfmri_sacgvf_bscs_pulh', 'tfmri_ma_lvnfb_b_cds_clatcgelh', 'tfmri_sst_nbeh_nruns', 'tfmri_sst_all_beh_crgo_nt', 'tfmri_sst_all_beh_incrlg_rt', 'tfmri_sacgvf_bscs_purh', 'tfmri_sacsvcg_bscs_crbcxlh', 
+# 'tfmri_saasvcg_bscs_tplh', 'tfmri_saasvcg_bscs_aalh', 'tfmri_sacsvis_bscs_aarh', 'tfmri_nback_all_148',
+# 'tfmri_nback_all_154', 'tfmri_nback_all_185', 'tfmri_nback_all_216', 'tfmri_nback_all_224', 'tfmri_nback_all_237',
+# 'tfmri_rec_all_beh_newnf_hr', 'smri_thick_cdk_fusiformlh', 'smri_thick_cdk_iftmlh', 'smri_thick_cdk_parsobislh',
+# 'smri_thick_cdk_pclh', 'smri_thick_cdk_smlh', 'smri_thick_cdk_frpolelh', 'smri_thick_cdk_banksstsrh',
+# 'smri_thick_cdk_ifplrh', 'smri_thick_cdk_insularh', 'smri_vol_cdk_rrmdfrrh', 'sit_scr_expr_mratdiff1',
+# 'tfmri_ma_alvcr_b_scs_tprh', 'tfmri_sst_all_beh_s_nt', 'tfmri_nback_all_51', 'tfmri_nback_all_186', 'smri_thick_cdk_ptcaterh', 
+# 'ple_y_ss_total_bad', 'ple_y_ss_affected_bad_sum', 'peq_ss_overt_aggression', 'peq_ss_relational_aggs', 'peq_ss_overt_victim',
+# 'total_substances_used', 'weeks_preterm', 'injury_totals', 'p_edu_1', 'p_edu_2', 'p_edu_3', 'income_1', 'income_2', 'income_3',
+# 'motor_1', 'motor_2', 'motor_3', 'motor_4', 'motor_5', 'speech_1', 'speech_2', 'speech_3', 'speech_4', 'speech_5']
+
+# X_train_reduced = X_train[selected_cols]
+# X_test_reduced = X_test[selected_cols]
+# X_test_reduced.to_csv('/Users/madeleineseitz/Desktop/X_test_reduced.csv')
+# X_train_reduced.to_csv('/Users/madeleineseitz/Desktop/X_train_reduced.csv')
 # %%
