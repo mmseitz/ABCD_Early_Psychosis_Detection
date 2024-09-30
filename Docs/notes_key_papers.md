@@ -5,6 +5,7 @@ Papers and citations in Zotero
 ### Family History and mean PQ-BC endorsement and distress correlations
 
 (Karcher et al., 2018)
+
 - Family history of psychotic disorder in first degree relatives was associated with higher mean PQ-BC total and distress, whereas a family history of depression or mania was not
 - Higher PQ-BC scores were associated with neuropsychological test performance deficits such as working memory, motor and speech developmental milestone delays (particularly motor and speech devleopment) as well as KSADS internalizing composite
 - PLE persistence over time is associated with greater odds of developing a psychotic disorder in adulthood
@@ -13,6 +14,7 @@ Papers and citations in Zotero
 - Higher PQ-BC scores were associated with higher rates of child-rated internalizing symptoms
 
 (Karcher et al., 2021)
+
 - Brain volume associated with environmmental risk factors and PLEs
 - PLEs associated with urbanicity, deprivation, and toxins
 - Parental PLEs measured in Achenbach Self Report
@@ -22,6 +24,7 @@ Papers and citations in Zotero
 - some evidence consistent with brain volume partially mediating the association between deprivation (both rate of poverty and overall deprivation), perceptions of neighborhood safety, and lead exposure risk with PLEs
 
 (Leowy et al., 2011)
+
 - Study examining validity of PQ-B in 141 adolescents and young adults
 - participants completed both PQ-B and SIPS at intake
 - Endorsement of *three or more* positive symptoms on the PQ-B differentiated between those with prodromal syndrome and psychotic syndrome diagnoses on the SIPS versus those with no SIPS diagnoses with 89% sensitivity, 58% specificity, and a positive likelihood ratio of 2.12
@@ -40,6 +43,7 @@ Papers and citations in Zotero
 ### Cognition and Psychosis
 
 (Sheffield et al., 2018)
+
 - not a sympotm of psychotic disorders, but cognitive dysfunction is a core feature of illnesses that include psychotic symptoms
 - cognitive impairment is a main contributor to impairment in psychotic disorders
 - understanding the timing, specificity, and severity of cognitive deficits in psychotic disorders creates a window into brain function across the lifespan
@@ -62,6 +66,7 @@ Papers and citations in Zotero
 ### Structural Brain Abnormalities in Psychosis-Risk Children
 
 (Satterthwaite et al., 2016)
+
 - population ranged in age from 8-22yrs (PS n = 391, TD n = 400)
 - compared to the TD group, the PS group had diminished whole brain gray matter volume and expanded white matter volume
 - Voxelwise analyses revealed significantly lower gray matter volume in the medial temporal lobes as well as in frontal, temporal, and parietal cortex. Reduction of medial temporal lobe volume was correlated with PS symptom severity
@@ -82,12 +87,15 @@ Papers and citations in Zotero
 - Early loss of gray matter is consistent with prior reports of 'accelerated aging' in schizophrenia
 
 (Sheffield et al. 2017)
+
 - More pronounced cortical gray matter loss has been detected in UHR individuals who later convert to psychosis relative to health control and relative to non-converters
 - Neuroimaging studies provide consistent evidence for greater gray matter decline over time in at-risk individuals who go on to develop the full-blown disorder relative to those who don't
 - Structural brain abnormalities in psychosis occur prior to full-blown symptoms and progressively worsen as psychosis develops
 
 ### Youth Psychosis Risk
+
 (Calkins et al., 2014)
+
 - There are much higher rates of PLEs in youths than adults (range 5-35%). Although these symptoms are likely transient in most children, their evolution into full psychosis may be moderated by symptom severity, type, and persistence
 - Regardless of eventual psychosis, early subclinical psychotic symptoms are associated with comorbid psychopathology, including depression, anxiety, and substance use; impaired global functioning and increased suicidality
 - Psychosis spectrum youths showed a mild but significant decrease in performance accuracy across neurocognitive domains compared to non-spectrum
@@ -100,7 +108,9 @@ Papers and citations in Zotero
 - several studies suggest that adolescents tend not to confide psychotic like experiences to their caregivers or clinicians
 
 ### ABCD
+
 (Karcher et al., 2020)
+
 - ABCD is the largest study in the US assessing brain development (baseline n = 11,875)
 - The dataset has a wealth of measured attributes of youths and their environment, including neuroimaging, cognitive, biospecimen, behavioral, youth self-report and parent self-report metrics, and environmental measures
 - ABCD utilized a school-based national recruitment strategy with limited exclusion criteria, helping to overcome challenges to previous general population studies that generally did not include neuroimaging as well as attempts to understand the risk factors associated with negative outcomes that relied on convenience samples
@@ -108,7 +118,9 @@ Papers and citations in Zotero
 - ABCD study assessments encompass seven domains: substance use, mental health, physical health and biospecimens, neurocognition, gender identity and sexual health, culture and environment, and brain imaging
 
 ### ABCD and Psychosis Risk
+
 (Karcher et al., 2024)
+
 - Psychotic Like Experiences (PLEs) Include unusual thought content, including unconventional beliefs, and perceptual abnormalities, including auditory and visual distortions, that like on the lower end of the psychosis spectrum continuum
     - Although PLEs generally refer to non-clinical forms of psychosis spectrum symptoms, individuals experiencing PLEs in childhood and adolescence show greater odds of developing diagnosable health concerns, including psychosis, in adulthood
 - According to the expanded proneness-persistence-impairment model (PPI model), most PLEs may be more benign and transient because exposure to additional environmental risks and/or stronger genetic/early environmental diathesis (potentially reflected in increased expression of pathophysiology over development) is necessary for subclinical psychosis to first become distressing and persistent and, second, to deteriorate into a clinical psychotic state
@@ -131,4 +143,23 @@ Papers and citations in Zotero
 - The overall results may point to the heterogeneity of PLEs, with this heterogeneity perhaps masking the ability to uncover unifying risk factors. The heterogeneity of transient PLEs is highlighted by the poor accuracy of these groups regardless of how defined. Therefore, it may not be until the worsening of symptoms or onset of functional impairment that symptoms are of sufficient severity to be distinguished from less severe PLEs
 - Analyses indicate that ML analyses can be used to distinguish persistent distressing from low level PLE groups. Additional evidence indicated that distress may be more distinguishable than persistence, including evidence that models performed poorly when trying to distinguish persistent from transient distressing PLEs
 - The work also reinforces the importance of several metrics that have been previously implicated in the development and worsening of early psychotic experiences. ACEs appeared especially important for persistent distressing PLEs, potentially providing support for the PPI model—that worsening PLEs is linked to greater environmental loading. Both persistent and transient distressing PLEs were linked to risk factors including internalizing symptoms. 
+
+### Childhood Stress and Psychosis Risk
+
+(De Loore et al., 2007)
+
+- experienced trauma and victimization during childhood are associated with an increased risk of developing subclinical or clinical psychosis symptoms in adulthood
+- Experiences of victimization, such as bullying, and negative life events, may impact the onset and persistence of psychotic experiences in adults
+- The effects are more visible for more unexpected and/or severe forms of trauma such as life events and sexual abuse, rather than more repeated and contextspecific traumas such as bullying
+- The accumulation of negative life events appeared to amplify the risk to develop subclinical psychotic experiences in a dose–response fashion
+- Severe and persistent traumatic events in childhood may lead to long-lasting neurodevelopmental and neurobiological abnormalities, reflecting a biological vulnerability for schizophrenia in adulthood, which has been demonstrated in a recent biological model
+- stressful life events have been found to influence the course and intensity of psychotic symptoms, by inducing dopaminergic hyper-responsivity in response to mild stressors
+
+(Bhavsar et al., 2017)
+
+- It is well documented that early adversity increases likelihood of subsequent adversity, possibly through social processes whereby the negative effects of early adversity persist over time, restricting subsequent opportunities and increases likelihood of poverty and exposure to adverse events
+- Childhood adversity and life events may both combine synergistically to increase risk (through effects on similar biological and psychological mechanisms) and be on a causal path, such that some of effect of childhood adversity on psychosis is mediated through increased likelihood (due to social processes) of subsequent adverse life events
+- Associations were found between PEs and reporting childhood abuse, younger age, lower overall educational attainment, non-White ethnicity, being unemployed, and recent attack, crime victimisation, war exposure, witnessing of violence, experience of an accident, death of a partner and separation
+- In the fully adjusted model, an estimated 47% of the total effect of abuse on PEs was mediated via adulthood adverse life events, of which violent life events made up 33% and non-violent life events the remaining 14%. The overall association between childhood abuse and PEs was explained partially by indirect effects via the experience both of adulthood violent and non-violent adverse life events.
+- The relationship between trauma, psychosis and other trauma-related psychopathology is likely to be complex
 
