@@ -18,6 +18,7 @@ import os
 import time
 import joblib
 from pickle import dump, load
+import scipy.stats as stats
 from scipy.stats import randint
 print('done')
 # %%
@@ -56,24 +57,24 @@ selected_features = X_train.columns[list(sffs_LR.k_feature_idx_)]
 print(selected_features)
 print(sffs_LR.k_score_)
 
-Index(['tfmri_ma_rpvnfb_b_cds_clcgelh', 'tfmri_ma_acgml_b_scs_tplh',
-       'tfmri_sst_beh_performflag', 'tfmri_sst_all_beh_crgo_nt',
-       'tfmri_sst_all_beh_ssds_nt', 'tfmri_sacgvf_bscs_crbwmlh',
-       'tfmri_sacgvf_bscs_tplh', 'tfmri_sacgvf_bscs_cdelh',
-       'tfmri_sacsvcg_bscs_crbwmlh', 'tfmri_sacsvcg_bscs_aarh',
-       'tfmri_saasvcg_bscs_pdlh', 'tfmri_saasvcg_bscs_crbcxrh',
-       'tfmri_saigvcg_bscs_crbwmlh', 'tfmri_nback_all_66',
-       'tfmri_nback_all_87', 'sit_scr_values_count3', 'lmt_scr_perc_correct',
-       'smri_vol_cdk_cdacatelh', 'smri_vol_cdk_cdmdfrrh',
-       'smri_vol_cdk_lobfrrh', 'smri_vol_cdk_periccrh',
-       'smri_vol_cdk_tmpolerh', 'smri_thick_cdk_pclh',
-       'smri_thick_cdk_insulalh', 'smri_thick_cdk_suplrh',
-       'ple_y_ss_total_number', 'ple_y_ss_total_good',
-       'peq_ss_relational_victim', 'peq_ss_reputation_victim',
-       'peq_ss_overt_victim', 'comc_ss_collective_capacity_p', 'disc_2_a',
-       'crime_1', 'crime_2', 'crime_5'],
-      dtype='object')
-0.9106127974052503
+# Index(['tfmri_ma_rpvnfb_b_cds_clcgelh', 'tfmri_ma_acgml_b_scs_tplh',
+#        'tfmri_sst_beh_performflag', 'tfmri_sst_all_beh_crgo_nt',
+#        'tfmri_sst_all_beh_ssds_nt', 'tfmri_sacgvf_bscs_crbwmlh',
+#        'tfmri_sacgvf_bscs_tplh', 'tfmri_sacgvf_bscs_cdelh',
+#        'tfmri_sacsvcg_bscs_crbwmlh', 'tfmri_sacsvcg_bscs_aarh',
+#        'tfmri_saasvcg_bscs_pdlh', 'tfmri_saasvcg_bscs_crbcxrh',
+#        'tfmri_saigvcg_bscs_crbwmlh', 'tfmri_nback_all_66',
+#        'tfmri_nback_all_87', 'sit_scr_values_count3', 'lmt_scr_perc_correct',
+#        'smri_vol_cdk_cdacatelh', 'smri_vol_cdk_cdmdfrrh',
+#        'smri_vol_cdk_lobfrrh', 'smri_vol_cdk_periccrh',
+#        'smri_vol_cdk_tmpolerh', 'smri_thick_cdk_pclh',
+#        'smri_thick_cdk_insulalh', 'smri_thick_cdk_suplrh',
+#        'ple_y_ss_total_number', 'ple_y_ss_total_good',
+#        'peq_ss_relational_victim', 'peq_ss_reputation_victim',
+#        'peq_ss_overt_victim', 'comc_ss_collective_capacity_p', 'disc_2_a',
+#        'crime_1', 'crime_2', 'crime_5'],
+#       dtype='object')
+# 0.9106127974052503
 # %%
 ####
 #Random Forest Classifier
@@ -87,16 +88,16 @@ selected_features = X_train.columns[list(sffs_RF.k_feature_idx_)]
 print(selected_features)
 print(sffs_RF.k_score_)
 ###Output
-Index(['tfmri_mid_all_beh_slnfb_rate', 'tfmri_ma_lvnfb_b_cds_clatcgelh',
-       'tfmri_ma_acmvn_b_scs_ayrh', 'tfmri_sst_all_beh_crgo_nt',
-       'tfmri_sst_all_beh_incrs_mrt', 'tfmri_sacgvf_bscs_purh',
-       'tfmri_saisvcg_bscs_pdlh', 'tfmri_saisvcg_bscs_crbcxrh',
-       'tfmri_nback_all_87', 'smri_vol_cdk_periccrh',
-       'smri_thick_cdk_postcnrh', 'ple_y_ss_total_number',
-       'peq_ss_relational_victim', 'peq_ss_overt_victim', 'comc_ss_control_p',
-       'income_3', 'disc_3_a', 'disc_4_a', 'crime_2', 'crime_5'],
-      dtype='object')
-0.88507170676982
+# Index(['tfmri_mid_all_beh_slnfb_rate', 'tfmri_ma_lvnfb_b_cds_clatcgelh',
+#        'tfmri_ma_acmvn_b_scs_ayrh', 'tfmri_sst_all_beh_crgo_nt',
+#        'tfmri_sst_all_beh_incrs_mrt', 'tfmri_sacgvf_bscs_purh',
+#        'tfmri_saisvcg_bscs_pdlh', 'tfmri_saisvcg_bscs_crbcxrh',
+#        'tfmri_nback_all_87', 'smri_vol_cdk_periccrh',
+#        'smri_thick_cdk_postcnrh', 'ple_y_ss_total_number',
+#        'peq_ss_relational_victim', 'peq_ss_overt_victim', 'comc_ss_control_p',
+#        'income_3', 'disc_3_a', 'disc_4_a', 'crime_2', 'crime_5'],
+#       dtype='object')
+# 0.88507170676982
 # %%
 ####
 ###Sequential Backwards Feature Selection
@@ -112,12 +113,12 @@ print(selected_features)
 print(sbfs_LR.k_score_)
 
 ###Output
-Index(['tfmri_sst_all_beh_crgo_stdrt', 'tfmri_nback_all_66',
-       'tfmri_nback_all_87', 'smri_vol_cdk_cuneusrh', 'ple_y_ss_total_number',
-       'ple_y_ss_total_good', 'peq_ss_relational_victim',
-       'peq_ss_reputation_victim', 'crime_2', 'crime_5'],
-      dtype='object')
-0.8656379609209797
+# Index(['tfmri_sst_all_beh_crgo_stdrt', 'tfmri_nback_all_66',
+#        'tfmri_nback_all_87', 'smri_vol_cdk_cuneusrh', 'ple_y_ss_total_number',
+#        'ple_y_ss_total_good', 'peq_ss_relational_victim',
+#        'peq_ss_reputation_victim', 'crime_2', 'crime_5'],
+#       dtype='object')
+# 0.8656379609209797
 
 # %%
 #Random Forest Classifier
@@ -132,13 +133,13 @@ print(selected_features)
 print(sbfs_RF.k_score_)
 
 ####Output
-Index(['tfmri_ma_lvnfb_b_cds_roagelh', 'tfmri_sacsvcg_bscs_crbwmrh',
-       'tfmri_nback_all_13', 'nihtbx_picture_agecorrected',
-       'ple_y_ss_total_number', 'peq_ss_relational_victim',
-       'peq_ss_reputation_victim', 'comc_ss_collective_capacity_p', 'disc_3_b',
-       'crime_5'],
-      dtype='object')
-0.8314409734221054
+# Index(['tfmri_ma_lvnfb_b_cds_roagelh', 'tfmri_sacsvcg_bscs_crbwmrh',
+#        'tfmri_nback_all_13', 'nihtbx_picture_agecorrected',
+#        'ple_y_ss_total_number', 'peq_ss_relational_victim',
+#        'peq_ss_reputation_victim', 'comc_ss_collective_capacity_p', 'disc_3_b',
+#        'crime_5'],
+#       dtype='object')
+# 0.8314409734221054
 # %%
 #####
 #Recursive Feature Selection
