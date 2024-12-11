@@ -1,26 +1,30 @@
 ## ABCD_Early_Psychosis_Detection
 
-This repository contains documentation and scripts for early detection of psychosis in the ABCD cohort research project. 
+This repository contains documentation and scripts for classification of participants at high- and low-risk for developing psychosis in the ABCD dataset. Below is the necessary information to calculate predictions. While some pipelines have been tested to work out of hte box, please note that this is not supposed to be a toolbox and is not polished or maintained as one. I am happy to answer any additional questions at: madeleinemseitz@gmail.com.
 
-### Project scope:
+The scripts in this repository take data from the ABCD 5.0 release and classify particpants at both follow-up 2 and follow-up 4. No data are stored in this repository. Scripts are broken into four sub-folders: 
 
-#### Introduction
-Sub-threshold psychotic symptoms in adolescence are a risk factor for psychotic disorders and other diverse psychopathology later in life (Calkins, 2014). Early identification of psychosis risk can allow for the deployment of life-changing interventions that may ameliorate the trajectory of an individual’s prognosis (Gur, 2014). Psychosis is typically preceded by a prodromal phase characterized by social and cognitive deficits and structural brain abnormalities, and significantly associated with environmental factors such as socioeconomic status and exposure to adverse life events (Satterthwaite, 2015; Sheffield, 2018; Bhasvar, 2017). Here we apply a series of supervised machine learning models in a multisite large-scale dataset to comprehensively evaluate key indicators of a psychosis high-risk state and compare their performances on different classes of psychosis-relevant features: cognition, MRI, and early stress and environment.
+csv_preprocessing:
+- This folder contains all scripts for preprocessing ABCD csvs and conducting preliminary statistical analyses
+- high- and low-risk groups are determined by participant scores on the Prodromal Psychosis Scale (pps_breakdown and refinement)
+- High-risk groups are matched to a demographically similar low-risk group of equal size usign R-Matchit 
 
-#### Methods: 
-Data from ABCD follow-up 2 (n = 10,973) and ABCD follow-up 4 (n = 4,754) were analyzed to evaluate the efficacy of cognitive, structural, and environmental features in indicating psychosis risk in adolescents (mean age = 11.71 years). Participants who endorsed 4+ items on the Prodromal Psychosis Scale (PPS) were identified as high-risk for developing psychosis and matched by sex, age, and ethnicity with a low-risk cohort who endorsed no PPS questions and had no family history of psychosis at both T2 and T4 (T2 high-risk n = 566, T2 low-risk n = 614; T4 high-risk n = 109, T4 low-risk n = 100). Before participant classification, data were preprocessed using a range of feature selection algorithms (sequential forward and backward logistic regression and random forest and recursive feature selection). In total we compared the accuracy of four supervised machine learning models with different subsets of ABCD features: cognitive (trained on cognitive task battery behavioral scores and fMRI beta weights), structural MRI (cortical thickness and volume of right and left Desikan-Killiany regions), environment (environmental features relevant to psychosis risk), and composite models with all features: cognitive, structural MRI, and environment. The following models were tested for each set of features: logistic regression, linear and quadratic discriminant analysis, Gaussian Naïve Bayes, K-nearest neighbor, and decision tree, random forest, extra trees, and XG boost classifiers. 
+T2_feature_selection: 
+- T2 feature selection scripts determine the features used in both T2 adn T4 models
+- feature selection is conducted for each of the four sets of features evaluated in each dataset: MRI, cognition, environment, and a composite model
 
-Models were run twice: initially with a T2 training set and a T2 test set. Models were run a second time with the same T2 training set and tested on T4 data (omitting any participants presents in T2 train set; test HR n = 80, test LR n = 59).
+T2_ML:
+- This folder preprocesses and runs data at follow-up 2 (models are trained and tested on follow-up 2 data)
+- This folder contains preprocessing scripts for the four sets of features evaluated and supervised ML scripts
+- each ML script contains 9 supervised machine learning models: logistic regression, linear discriminant analysis, quadratic discriminant analysis, Gaussian Naive Bayes, K nearest Neighbor, Descision Tree, Random Forest, Extra Trees, and XGBoost
 
-### Scripts
+T4_ML:
+- This folder preprocesses data at follow-up 4 and runs models trained on follow-up 2 and tested on data from follow-up 4
+- This folder contains preprocessing scripts for the four sets of features evaluated and supervised ML scripts
+- each ML script contains 9 supervised machine learning models: logistic regression, linear discriminant analysis, quadratic discriminant analysis, Gaussian Naive Bayes, K nearest Neighbor, Descision Tree, Random Forest, Extra Trees, and XGBoost
+  
+### Environment
 
-"Scripts" folder contains all preprocessing and ML scripts used in this project, organized by type and ABCD wave
+These scripts require a number of python modules to run. ML scripts rely primariy on scikit-learn and scipy-stats.
 
-### Docs
-
-"Docs" folder contains documentation and complementary information to scripts
-
-### Spreadsheeets
-
-"Spreadsheets" contain various data breakdowns at different points in analysis 
 
