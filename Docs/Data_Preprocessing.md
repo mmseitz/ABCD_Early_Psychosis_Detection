@@ -17,3 +17,13 @@ Beta weight parameters were selected based on brain regions relevant to psychosi
 
 A subset of ABCD structural scan data are preprocessed in preparation for the ML pipeline (csv: abcd_smrip10201, script: structural_data_preprocessing)
 Cortical thickness and cortical volume of right and left Desikan-Killiany regions, in addition to hemisphere and total mean values collected at ABCD follow-up 2 are included. Previous literature has shown that participants at risk for psychosis generally, as well as ABCD psychosis risk participants specifically, exhibit structural brain abnormalities.
+
+# Preprocessing Environmental Data (2/3/25)
+1. Peer Experiences Questionnaire
+- categorical variables (individual questions) left out in favor of summary scores due to poor variance
+2. Discrimination Measure 
+- categorical variables (individual questions) left out in favor of summary scores due to poor variance
+3. Parental Monitoring Scale
+- categorical variables (individual questions) left out in favor of summary scores due to poor variance
+4. SRPF
+- categorical variables (individual questions) left out in favor of summary scores due to poor variance
